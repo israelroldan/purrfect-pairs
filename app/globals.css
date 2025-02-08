@@ -4,9 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --base-path: "";
+}
+
 body {
   font-family: "Fredoka One", cursive;
-  cursor: url("/cats/cat-cursor.svg") 20 20, auto;
+  cursor: url("var(--base-path)/cat-cursor.svg") 20 20, auto;
 }
 
 @keyframes bounce-in {
