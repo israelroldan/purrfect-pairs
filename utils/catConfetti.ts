@@ -3,7 +3,7 @@ import confetti from "canvas-confetti"
 export function catConfetti() {
   const duration = 5 * 1000
   const animationEnd = Date.now() + duration
-  const defaults: confetti.Options = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
+  const defaults: any = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
 
   function randomInRange(min: number, max: number) {
     return Math.random() * (max - min) + min

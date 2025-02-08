@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { fetchCatImages } from "../utils/catApi"
 import { catConfetti } from "../utils/catConfetti"
 import { motion, AnimatePresence } from "framer-motion"
-import { getBasePath } from "../utils/basePath"
+import Image from "next/image"
 
 interface Card {
   imageUrl: string
@@ -29,10 +29,8 @@ export default function CatMemoryGame() {
   ])
   const [gameCompleted, setGameCompleted] = useState<boolean>(false)
   const [winner, setWinner] = useState<number | null>(null)
-  const [basePath, setBasePath] = useState<string>("")
 
   useEffect(() => {
-    setBasePath(getBasePath())
     initializeGame()
   }, [])
 
@@ -201,10 +199,12 @@ export default function CatMemoryGame() {
                 animate={{ rotateY: card.isFlipped || card.isMatched ? 0 : -180 }}
                 transition={{ duration: 0.6 }}
               >
-                <img
-                  src={card.imageUrl || `${basePath}/placeholder.svg`}
+                <Image
+                  src={card.imageUrl || "/cats/placeholder.svg"}
                   alt="Cat"
-                  className="w-full h-full object-cover rounded-lg"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
                 />
               </motion.div>
             </div>

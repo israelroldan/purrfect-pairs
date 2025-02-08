@@ -1,6 +1,6 @@
 const nextConfig = {
-  reactStrictMode: true,
-  assetPrefix: ".",
+  basePath: "/cats",
+  assetPrefix: "/cats/",
 }
 
 module.exports = nextConfig
