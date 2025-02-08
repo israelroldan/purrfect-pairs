@@ -29,8 +29,10 @@ export default function CatMemoryGame() {
   ])
   const [gameCompleted, setGameCompleted] = useState<boolean>(false)
   const [winner, setWinner] = useState<number | null>(null)
+  const [basePath, setBasePath] = useState<string>("")
 
   useEffect(() => {
+    setBasePath(getBasePath())
     initializeGame()
   }, [])
 
@@ -95,7 +97,7 @@ export default function CatMemoryGame() {
                 ? 1
                 : null
           setWinner(winningPlayer)
-          setTimeout(() => catConfetti(), 500) // This line calls the updated catConfetti function
+          setTimeout(() => catConfetti(), 500)
         }
       } else {
         // No match
@@ -200,7 +202,7 @@ export default function CatMemoryGame() {
                 transition={{ duration: 0.6 }}
               >
                 <img
-                  src={card.imageUrl || `${getBasePath()}/placeholder.svg`}
+                  src={card.imageUrl || `${basePath}/placeholder.svg`}
                   alt="Cat"
                   className="w-full h-full object-cover rounded-lg"
                 />

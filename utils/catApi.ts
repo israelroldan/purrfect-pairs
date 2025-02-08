@@ -19,7 +19,8 @@ export async function fetchCatImages(count: number): Promise<string[]> {
   } catch (error) {
     console.error("Error fetching cat images:", error)
     // Return an array of placeholder image URLs in case of an error
-    return Array(count).fill(`${getBasePath()}/placeholder.svg`)
+    const basePath = getBasePath()
+    return Array(count).fill(`${basePath}/placeholder.svg`)
   }
 }
 
