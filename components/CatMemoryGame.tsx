@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { fetchCatImages } from "../utils/catApi"
 import { catConfetti } from "../utils/catConfetti"
 import { motion, AnimatePresence } from "framer-motion"
+import { getBasePath } from "../utils/basePath"
 
 interface Card {
   imageUrl: string
@@ -199,7 +200,7 @@ export default function CatMemoryGame() {
                 transition={{ duration: 0.6 }}
               >
                 <img
-                  src={card.imageUrl || "/placeholder.svg"}
+                  src={card.imageUrl || `${getBasePath()}/placeholder.svg`}
                   alt="Cat"
                   className="w-full h-full object-cover rounded-lg"
                 />

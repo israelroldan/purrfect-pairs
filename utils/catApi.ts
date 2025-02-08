@@ -1,3 +1,5 @@
+import { getBasePath } from "./basePath"
+
 const CAT_API_KEY = process.env.NEXT_PUBLIC_CAT_API_KEY || "DEMO-API-KEY"
 
 export async function fetchCatImages(count: number): Promise<string[]> {
@@ -17,7 +19,7 @@ export async function fetchCatImages(count: number): Promise<string[]> {
   } catch (error) {
     console.error("Error fetching cat images:", error)
     // Return an array of placeholder image URLs in case of an error
-    return Array(count).fill("/placeholder.svg")
+    return Array(count).fill(`${getBasePath()}/placeholder.svg`)
   }
 }
 
