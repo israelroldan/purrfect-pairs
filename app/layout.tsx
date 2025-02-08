@@ -1,6 +1,6 @@
 import "./globals.css"
 import { Inter } from "next/font/google"
-import type React from "react" // Import React
+import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,7 +20,13 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            document.documentElement.style.setProperty('--base-path', '${process.env.NEXT_PUBLIC_BASE_PATH || ""}');
+            (function() {
+              var basePath = '${process.env.NEXT_PUBLIC_BASE_PATH || ""}';
+              var cursorUrl = basePath + '/cat-cursor.svg';
+              document.addEventListener('DOMContentLoaded', function() {
+                document.body.style.cursor = 'url(' + cursorUrl + ') 20 20, auto';
+              });
+            })();
           `,
           }}
         />
